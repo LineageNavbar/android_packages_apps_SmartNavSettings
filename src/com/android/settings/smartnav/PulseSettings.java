@@ -64,6 +64,7 @@ public class PulseSettings extends SettingsPreferenceFragment implements
     private static final String PULSE_SOLID_UNITS_COUNT = "pulse_solid_units_count";
     private static final String PULSE_SOLID_UNITS_OPACITY = "pulse_solid_units_opacity";
     private static final String PULSE_CUSTOM_BUTTONS_OPACITY = "pulse_custom_buttons_opacity";
+    private static final String PULSE_FADING_BLOCKS_OPACITY = "pulse_fading_blocks_opacity";
 
     static final int DEFAULT = 0xffffffff;
     static final int DEFAULT_TO = 0xff8080ff;
@@ -88,6 +89,7 @@ public class PulseSettings extends SettingsPreferenceFragment implements
     CustomSeekBarPreference mSolidCount;
     CustomSeekBarPreference mSolidOpacity;
     CustomSeekBarPreference mNavButtonsOpacity;
+    CustomSeekBarPreference mFadingOpacity;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -105,6 +107,7 @@ public class PulseSettings extends SettingsPreferenceFragment implements
                 Settings.Secure.PULSE_RENDER_STYLE_URI, RENDER_STYLE_SOLID_LINES, UserHandle.USER_CURRENT);
         mRenderMode = (ListPreference) findPreference("pulse_render_mode");
         mRenderMode.setValue(String.valueOf(renderMode));
+        mRenderMode.setSummary(mRenderMode.getEntry());
         mRenderMode.setOnPreferenceChangeListener(this);
 
         mAutoColor = (SwitchPreference) findPreference("pulse_auto_color");
@@ -204,7 +207,7 @@ public class PulseSettings extends SettingsPreferenceFragment implements
         mSolidCount.setValue(count);
         mSolidCount.setOnPreferenceChangeListener(this);
 
-        int opacity = Settings.Secure.getIntForUser(getContentResolver(),
+        int opacitysolid = Settings.Secure.getIntForUser(getContentResolver(),
                 Settings.Secure.PULSE_SOLID_UNITS_OPACITY, 200, UserHandle.USER_CURRENT);
         mSolidOpacity =
                 (CustomSeekBarPreference) findPreference(PULSE_SOLID_UNITS_OPACITY);
@@ -217,6 +220,13 @@ public class PulseSettings extends SettingsPreferenceFragment implements
                 (CustomSeekBarPreference) findPreference(PULSE_CUSTOM_BUTTONS_OPACITY);
         mNavButtonsOpacity.setValue(buttonsOpacity);
         mNavButtonsOpacity.setOnPreferenceChangeListener(this);
+
+        int opacityblock = Settings.Secure.getIntForUser(getContentResolver(),
+                Settings.Secure.PULSE_FADING_BLOCKS_OPACITY, 200, UserHandle.USER_CURRENT);
+        mFadingOpacity =
+                (SecureSettingSeekBarPreference) findPreference(PULSE_FADING_BLOCKS_OPACITY);
+        mFadingOpacity.setValue(opacityblock);
+        mFadingOpacity.setOnPreferenceChangeListener(this);
     }
 
     @Override
@@ -229,6 +239,7 @@ public class PulseSettings extends SettingsPreferenceFragment implements
             fadingBarsCat.setEnabled(mode == RENDER_STYLE_FADING_BARS);
             PreferenceCategory solidBarsCat = (PreferenceCategory)findPreference("pulse_2");
             solidBarsCat.setEnabled(mode == RENDER_STYLE_SOLID_LINES);
+            mRenderMode.setSummary(mRenderMode.getEntry());
             return true;
         } else if (preference.equals(mShowPulse)) {
             boolean enabled = ((Boolean) newValue).booleanValue();
@@ -324,6 +335,11 @@ public class PulseSettings extends SettingsPreferenceFragment implements
             Settings.Secure.putIntForUser(getContentResolver(),
                     Settings.Secure.PULSE_CUSTOM_BUTTONS_OPACITY, val, UserHandle.USER_CURRENT);
             return true;
+        } else if (preference == mFadingOpacity) {
+            int val = (Integer) newValue;
+            Settings.Secure.putIntForUser(getContentResolver(),
+                    Settings.Secure.PULSE_FADING_BLOCKS_OPACITY, val, UserHandle.USER_CURRENT);
+            return true;
         }
         return false;
     }
@@ -372,6 +388,11 @@ public class PulseSettings extends SettingsPreferenceFragment implements
                 Settings.Secure.FLING_PULSE_COLOR, DEFAULT);
         mPulseColor.setNewPreviewColor(DEFAULT);
         mPulseColor.setSummary(R.string.default_string);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
     }
 
     @Override
