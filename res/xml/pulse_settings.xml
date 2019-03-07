@@ -152,7 +152,6 @@
             android:title="@string/lavamp_solid_speed_title"
             android:max="30000"
             settings:min="200"
-            settings:interval="200"
             settings:units="ms"
             android:dependency="pulse_fading_bars_category"/>
     </PreferenceCategory>
@@ -172,8 +171,8 @@
             android:key="pulse_solid_units_count"
             android:title="@string/pulse_solid_units_count"
             android:max="128"
-            settings:interval="16"
             settings:min="32"
+            android:defaultValue="64"
             android:dependency="pulse_2"/>
 
         <com.invictrix.support.preferences.CustomSeekBarPreference
@@ -188,7 +187,6 @@
             android:title="@string/lavamp_solid_speed_title"
             android:max="30000"
             settings:min="200"
-            settings:interval="200"
             settings:units="ms"
             android:dependency="pulse_2"/>
     </PreferenceCategory>
