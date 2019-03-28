@@ -27,6 +27,7 @@ import android.support.v14.preference.SwitchPreference;
 import android.provider.Settings;
 
 import com.android.internal.logging.nano.MetricsProto; 
+import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 
 public class StockSettings extends SettingsPreferenceFragment {
@@ -42,6 +43,6 @@ public class StockSettings extends SettingsPreferenceFragment {
 
     @Override
     public int getMetricsCategory() {
-        return MetricsProto.MetricsEvent.HAVOC_SETTINGS;
+        return MetricsProto.MetricsEvent.SMARTNAV_SETTINGS;
     }
 }

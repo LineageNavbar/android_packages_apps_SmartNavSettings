@@ -221,7 +221,7 @@ public class PulseSettings extends SettingsPreferenceFragment implements
                 Settings.Secure.PULSE_SOLID_UNITS_OPACITY, 200, UserHandle.USER_CURRENT);
         mSolidOpacity =
                 (CustomSeekBarPreference) findPreference(PULSE_SOLID_UNITS_OPACITY);
-        mSolidOpacity.setValue(opacity);
+        mSolidOpacity.setValue(opacitysolid);
         mSolidOpacity.setOnPreferenceChangeListener(this);
 
         int buttonsOpacity = Settings.Secure.getIntForUser(getContentResolver(),
@@ -234,7 +234,7 @@ public class PulseSettings extends SettingsPreferenceFragment implements
         int opacityblock = Settings.Secure.getIntForUser(getContentResolver(),
                 Settings.Secure.PULSE_FADING_BLOCKS_OPACITY, 200, UserHandle.USER_CURRENT);
         mFadingOpacity =
-                (SecureSettingSeekBarPreference) findPreference(PULSE_FADING_BLOCKS_OPACITY);
+                (CustomSeekBarPreference) findPreference(PULSE_FADING_BLOCKS_OPACITY);
         mFadingOpacity.setValue(opacityblock);
         mFadingOpacity.setOnPreferenceChangeListener(this);
     }
@@ -415,6 +415,6 @@ public class PulseSettings extends SettingsPreferenceFragment implements
 
     @Override
     public int getMetricsCategory() {
-        return MetricsProto.MetricsEvent.INVICTRIX;
+        return MetricsProto.MetricsEvent.SMARTNAV_SETTINGS;
     }
 }

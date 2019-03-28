@@ -189,6 +189,6 @@ public class NavigationBarSettings extends SettingsPreferenceFragment implements
 
     @Override
     public int getMetricsCategory() {
-        return MetricsProto.MetricsEvent.INVICTRIX;
+        return MetricsProto.MetricsEvent.SMARTNAV_SETTINGS;
     }
 }

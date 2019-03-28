@@ -215,7 +215,7 @@ public class SmartbarSettings extends SettingsPreferenceFragment implements
             case DIALOG_RESET_CONFIRM:
             case DIALOG_RESTORE_PROFILE:
             case DIALOG_SAVE_PROFILE:
-                return MetricsProto.MetricsEvent.INVICTRIX;
+                return MetricsProto.MetricsEvent.SMARTNAV_SETTINGS;
             default:
                 return 0;
         }
@@ -447,6 +447,6 @@ public class SmartbarSettings extends SettingsPreferenceFragment implements
 
     @Override
     public int getMetricsCategory() {
-        return MetricsProto.MetricsEvent.INVICTRIX;
+        return MetricsProto.MetricsEvent.SMARTNAV_SETTINGS;
     }
 }

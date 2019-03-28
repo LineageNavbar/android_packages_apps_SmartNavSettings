@@ -24,18 +24,6 @@
         android:summary="@string/nav_gesture_settings_summary"
         android:fragment="com.android.settings.gestures.SwipeUpGestureSettings" />
 
-	<com.lineage.support.preferences.SystemSettingSwitchPreference
-        android:key="pixel_nav_animation"
-        android:title="@string/pixel_navbar_anim_title"
-        android:summary="@string/pixel_navbar_anim_summary"
-        android:defaultValue="true" />
-
-	<com.lineage.support.preferences.SystemSettingSwitchPreference
-        android:key="one_hand_mode_enabled"
-        android:title="@string/one_hand_mode_title"
-        android:summary="@string/one_hand_mode_summary"
-        android:defaultValue="false" />
-
     <Preference
         android:title="@string/navbar_layout_title"
         android:summary="@string/navbar_layout_summary" >
