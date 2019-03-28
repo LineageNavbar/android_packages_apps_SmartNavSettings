@@ -44,8 +44,8 @@ import android.view.MenuInflater;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.invictrix.support.colorpicker.ColorPickerPreference;
-import com.invictrix.support.preferences.CustomSeekBarPreference;
+import com.lineage.support.colorpicker.ColorPickerPreference;
+import com.lineage.support.preferences.CustomSeekBarPreference;
 
 public class PulseSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {

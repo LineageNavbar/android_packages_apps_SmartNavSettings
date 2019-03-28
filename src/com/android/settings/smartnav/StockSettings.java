@@ -29,8 +29,6 @@ import android.provider.Settings;
 import com.android.internal.logging.nano.MetricsProto; 
 import com.android.settings.SettingsPreferenceFragment;
 
-import com.havoc.settings.R;
-
 public class StockSettings extends SettingsPreferenceFragment {
 
     public static final String TAG = "StockSettings";

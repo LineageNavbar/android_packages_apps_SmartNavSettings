@@ -22,8 +22,8 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
 
-import com.invictrix.support.colorpicker.ColorPickerPreference;
-import com.invictrix.support.preferences.CustomSeekBarPreference;
+import com.lineage.support.colorpicker.ColorPickerPreference;
+import com.lineage.support.preferences.CustomSeekBarPreference;
 
 import com.android.internal.logging.nano.MetricsProto;
 import com.android.internal.utils.ActionConstants;
